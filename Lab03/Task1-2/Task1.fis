@@ -1,0 +1,67 @@
+[System]
+Name='Task1'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=2
+NumRules=11
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Температура_води'
+Range=[0 100]
+NumMFs=5
+MF1='xolodna':'trimf',[0 10 25]
+MF2='proxolodna':'trimf',[20 30 45]
+MF3='tepla':'trimf',[40 50 60]
+MF4='negariacha':'trimf',[55 65 75]
+MF5='gariacha':'trimf',[70 85 100]
+
+[Input2]
+Name='Напір_води'
+Range=[0 10]
+NumMFs=3
+MF1='weak':'trimf',[0 1.5 3]
+MF2='notstrong':'trimf',[2 4.5 7]
+MF3='sostrong':'trimf',[5 7.5 10]
+
+[Output1]
+Name='Кут_повороту_крана_гарячої_води'
+Range=[-90 90]
+NumMFs=7
+MF1='big_left':'trimf',[-90 -75 -50]
+MF2='middle_left':'trimf',[-55 -45 -25]
+MF3='small_left':'trimf',[-30 -15 -5]
+MF4='zero':'trimf',[-10 0 10]
+MF5='notBig_right':'trimf',[5 15 30]
+MF6='middle_right':'trimf',[25 45 60]
+MF7='big_right':'trimf',[55 75 90]
+
+[Output2]
+Name='Кут_повороту_крана_холодної_води'
+Range=[-90 90]
+NumMFs=7
+MF1='big_left':'trimf',[-90 -75 -50]
+MF2='middle_left':'trimf',[-55 -45 -25]
+MF3='small_left':'trimf',[-30 -15 -5]
+MF4='zero':'trimf',[-10 0 10]
+MF5='notBig_Right':'trimf',[5 15 30]
+MF6='middle_right':'trimf',[25 45 60]
+MF7='Big_right':'trimf',[55 75 90]
+
+[Rules]
+5 3, 2 6 (1) : 1
+5 2, 4 6 (1) : 1
+4 3, 3 4 (1) : 1
+4 1, 5 5 (1) : 1
+3 2, 4 4 (1) : 1
+2 3, 6 2 (1) : 1
+2 2, 6 3 (1) : 1
+1 1, 7 4 (1) : 1
+1 3, 2 6 (1) : 1
+3 3, 3 3 (1) : 1
+3 1, 6 6 (1) : 1

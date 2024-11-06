@@ -1,0 +1,57 @@
+[System]
+Name='Task2'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=15
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Температура_повітря'
+Range=[0 40]
+NumMFs=5
+MF1='soCold':'trimf',[0 0 10]
+MF2='cold':'trimf',[5 10 15]
+MF3='normal':'trimf',[15 20 25]
+MF4='tepla':'trimf',[20 27 35]
+MF5='so_tepla':'trimf',[30 35 40]
+
+[Input2]
+Name='Швидкість_зміни_температури'
+Range=[-5 5]
+NumMFs=3
+MF1='minus':'trimf',[-5 -5 0]
+MF2='zero':'trimf',[-1 0 1]
+MF3='plus':'trimf',[0 5 5]
+
+[Output1]
+Name='Кут_регулятора_кондиціонера'
+Range=[-90 90]
+NumMFs=5
+MF1='Big_left':'trimf',[-90 -90 -45]
+MF2='Small_Left':'trimf',[-45 -15 0]
+MF3='off':'trimf',[-5 0 5]
+MF4='Small_Right':'trimf',[0 15 45]
+MF5='Big_Right':'trimf',[45 90 90]
+
+[Rules]
+5 3, 1 (1) : 1
+5 1, 2 (1) : 1
+4 3, 1 (1) : 1
+4 1, 3 (1) : 1
+1 1, 5 (1) : 1
+1 3, 4 (1) : 1
+2 1, 1 (1) : 1
+2 3, 3 (1) : 1
+5 2, 1 (1) : 1
+4 2, 2 (1) : 1
+1 2, 5 (1) : 1
+2 2, 4 (1) : 1
+3 3, 2 (1) : 1
+3 1, 4 (1) : 1
+3 2, 3 (1) : 1
